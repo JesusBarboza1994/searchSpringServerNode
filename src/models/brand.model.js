@@ -8,11 +8,12 @@ const BrandSchema = new mongoose.Schema({
     },
     name: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     image: {
       type: String, 
-      required: false
+      required: true
     },
  
   });
