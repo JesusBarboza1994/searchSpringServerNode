@@ -33,10 +33,8 @@ const codeSchema = new mongoose.Schema({
       type: String,
       required: true 
   },
-  cars_ids: {
-      type: [String], 
-      required: false 
-  }
+   
+  cars_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'car-brand-models' }]
   // cars_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'car-brand-models' }]
 });
 

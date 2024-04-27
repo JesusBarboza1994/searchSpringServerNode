@@ -1,19 +1,17 @@
 import Code from "../../models/code.model.js";
-export default async function listCodes(req, res) {
-  const codes = await Code.find({});
-    const codesAdapter= codes.map(code => {
-        return {
-            id: code.id,
-            img_url: code.image,
-            position: code.position,
-            price: code.price,
-            version: code.version,
-            type: code.type,
-            product_id: code.product_id,
-            osis_code: code.osis_code,
-            cars: code.cars_ids
+import Brand from "../../models/brand.model.js";
+export default async function listCodes({position, version}) {
+    let query = {}
+    if(position) query.position = position
+    if(version) query.version = version
+    
+    const codes = await Code.find(query)
+    .populate({
+        path: 'cars_ids',  // Poblamos primero los Car
+        populate: {
+        path: 'brand_id',  // Luego poblamos Brand dentro de cada Car
+        model: Brand  // Asegúrate de especificar el modelo correcto
         }
-    })
-
-    return codesAdapter
+    });
+    return codes
 }

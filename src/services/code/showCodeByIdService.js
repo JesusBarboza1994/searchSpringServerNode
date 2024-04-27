@@ -16,16 +16,6 @@ export default async function showCodeById({id}) {
      $unwind: "$transmeta_springs",  
     },
     { $project: {
-      "spring": {
-        "wire": "$transmeta_springs.wire",
-        "free_length": "$transmeta_springs.free_length",
-        "dext_1": "$transmeta_springs.dext_1",
-        "dext_2": "$transmeta_springs.dext_2",
-        "dint_1": "$transmeta_springs.dint_1",
-        "dint_2": "$transmeta_springs.dint_2",
-        "id": "$transmeta_springs.id",
-        "n": "$transmeta_springs.n",
-      },
       "code":{
         "id":"$id",
         "position":"$position",
