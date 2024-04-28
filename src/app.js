@@ -1,5 +1,5 @@
 import express from 'express'
-import connectDB from "./db.js";
+import connectDB from "./db/mongooseDB.js";
 import brandRoute from "./routes/brand.route.js"
 import modelCarRoute from "./routes/modelCar.route.js"
 import codeRoute from "./routes/code.route.js"
@@ -12,8 +12,8 @@ app.use("/brands", brandRoute)
 app.use("/cars",modelCarRoute )
 app.use("/codes",codeRoute )
 
-app.get('/', function(req, res){
-  res.send("Hello");
+app.get('/', async function(req, res){
+  res.send('Health check OK')
 });
 
 export default app
