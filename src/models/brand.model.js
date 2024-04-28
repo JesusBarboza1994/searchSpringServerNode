@@ -18,6 +18,6 @@ const BrandSchema = new mongoose.Schema({
  
   });
   
-  const Brands = mongoose.model('car-brand', BrandSchema);
+  const Brand = mongoose.model('car-brand', BrandSchema);
   
- export default Brands
+ export default Brand
