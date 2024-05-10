@@ -6,5 +6,5 @@ const config = {
   sqlServerPassword: process.env.SQLSERVER_PASSWORD,
   sqlServerDatabase: process.env.SQLSERVER_DATABASE
 }
-
+console.log("CONFIG", config)
 export default config
