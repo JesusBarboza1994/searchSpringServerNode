@@ -12,7 +12,7 @@ app.use("/brands", brandRoute)
 app.use("/cars",modelCarRoute )
 app.use("/codes",codeRoute )
 
-app.get('/', async function(req, res){
+app.get('/health', async function(req, res){
   res.send('Health check OK')
 });
 
