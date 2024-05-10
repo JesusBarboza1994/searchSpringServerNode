@@ -1,4 +1,4 @@
-import { listBrands } from "../../services/brand/listBrandsService.js";
+import { listBrands } from "../../services/brand/listBrands.service.js";
 
 export default async function listBrandsGetController(req, res) {
     try {

@@ -1,7 +1,7 @@
-import { listModelCars } from "../modelCar/listModelCarService.js"
-import showModel from "../modelCar/showModelCarService.js"
-import { listBrands } from "./listBrandsService.js"
-import showBrand from "./showBrandService.js"
+import { listModelCars } from "../modelCar/listModelCar.service.js"
+import showModel from "../modelCar/showModelCar.service.js"
+import { listBrands } from "./listBrands.service.js"
+import showBrand from "./showBrand.service.js"
 
 export default async function listBrandsAndModels({brand,model}) {
   let brands = []

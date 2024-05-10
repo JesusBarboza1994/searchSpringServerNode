@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const transmetaSpringSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true
-    },
     free_length: {
         type: Number,
         required: true
@@ -40,6 +35,6 @@ const transmetaSpringSchema = new mongoose.Schema({
     }
 });
 
-const TransmetaSpring = mongoose.model('transmeta-springs', transmetaSpringSchema);
+const TransmetaSpring = mongoose.model('springs', transmetaSpringSchema, 'springs');
 
 export default TransmetaSpring;

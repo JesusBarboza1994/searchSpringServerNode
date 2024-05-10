@@ -1,5 +1,5 @@
-import listBrandsAndModels from "../../services/brand/listBrandAndModelService.js";
-import listCodes from "../../services/code/listCodeService.js";
+import listBrandsAndModels from "../../services/brand/listBrandAndModel.service.js";
+import listCodes from "../../services/code/listCode.service.js";
 import pagination from "../../utils/pagination.js";
 
 export default async function listCodesGetController(req, res) {
@@ -11,7 +11,7 @@ export default async function listCodesGetController(req, res) {
     
     const codes = await listCodes({brand, model, version, position, start_year, end_year})
     codes.forEach(code => {
-      if(!positions.includes(code.position ? "POST" : "DEL")) positions.push(code.position ? "POST" : "DEL")
+      if(!positions.includes(code.position)) positions.push(code.position)
       if(!versions.includes(code.version)) versions.push(code.version)
     })
   

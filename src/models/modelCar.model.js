@@ -21,6 +21,6 @@ const carSchema = new mongoose.Schema({
     brand_id: [{ type: mongoose.Schema.Types.ObjectId, ref: 'car-brands' }]
   });
   
-  const ModelCar = mongoose.model('car-brand-models', carSchema);
+  const ModelCar = mongoose.model('car-models', carSchema, 'car-models');
   
  export default ModelCar

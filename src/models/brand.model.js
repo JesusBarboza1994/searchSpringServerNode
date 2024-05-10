@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 const BrandSchema = new mongoose.Schema({
-    id: {
-      type: String,
-      required:true,
-      unique: true
-    },
     name: {
       type: String,
       required: true,
@@ -18,6 +13,6 @@ const BrandSchema = new mongoose.Schema({
  
   });
   
-  const Brand = mongoose.model('car-brand', BrandSchema);
+  const Brand = mongoose.model('car-brands', BrandSchema, 'car-brands');
   
  export default Brand
