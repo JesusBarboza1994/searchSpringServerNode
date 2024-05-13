@@ -2,7 +2,7 @@ import express from "express";
 import listBrandsGetController from "../controllers/brand/ListBrandsGetController.js";
 const router = express.Router();
 
-router.get("/:search",listBrandsGetController)
+router.get("/",listBrandsGetController)
 
 
 export default router
