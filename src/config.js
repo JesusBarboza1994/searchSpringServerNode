@@ -1,6 +1,8 @@
 const config = {
   port: process.env.PORT || 3000,
   mongoURI: process.env.MONGODB_URI,
+  tokenApisNet: process.env.TOKEN_APIS_NET,
+  apisNetUrl: process.env.APIS_NET_URL,
   sqlServerUser: process.env.SQLSERVER_USER,
   sqlServer:process.env.SQLSERVER_SERVER,
   sqlServerPassword: process.env.SQLSERVER_PASSWORD,
