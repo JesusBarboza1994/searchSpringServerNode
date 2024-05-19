@@ -6,10 +6,13 @@ export default async function createOrderPostController(req, res) {
     const { customer_data, cart } = req.body;
     const customer = await createCustomer({customerData: customer_data});
     console.log("🚀 ~ createOrderPostController ~ customer_id:", customer)
-    const response = await createOrder({ customer_id: customer._id, cart });
+    const order = await createOrder({ customer_id: customer._id, cart });
     return res.status(201).send({
       success: true,
-      data:response
+      data:{
+        order,
+        customer
+      }
     })
   } catch (error) {
     console.log("🚀 ~ createOrderPostController ~ error:", error)

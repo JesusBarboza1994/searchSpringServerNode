@@ -8,7 +8,8 @@ const customerSchema = new mongoose.Schema({
   paternal_lastname: { type: String },
   email: { type: String },
   phone: { type: String, required: true },
-  address: { type: String }
+  address: { type: String, default: 'LIMA, PERU' },
+  price_list: { type: String, enum: ["A", "B", "C", "D", "E"], default: "A" },
 });
 
 const Customer = mongoose.model('customers', customerSchema, 'customers');

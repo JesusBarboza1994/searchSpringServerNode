@@ -7,7 +7,7 @@ export async function showTransmetaYuntaCode({osis_code}) {
   const stockTransmeta= await Osis.getStock({osis_code})
   console.log("🚀 ~ showTransmetaYuntaCode ~ stockTransmeta:", stockTransmeta)
   const stockYunta = await Osis.getStock({osis_code: yunta_code})
-  // const data = await Osis.getCustomer({document: "71918617"})
+  const data = await Osis.getCustomer({documentNumber, documentType, name, maternalLastname, paternalLastname, address, phone, email})
   const query = { osis_code: { $in: [osis_code, yunta_code] } };
 
   const codes = await Code.find(query);
