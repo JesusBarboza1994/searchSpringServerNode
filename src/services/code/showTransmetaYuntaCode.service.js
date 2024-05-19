@@ -1,12 +1,13 @@
 import Code from "../../models/code.model.js";
-import requestOsis from "../../utils/requestOsis.js";
+import Osis from "../../utils/Osis.js";
 
 export async function showTransmetaYuntaCode({osis_code}) {
   const yunta_code = osis_code.replace(/^0/, 'Y');
 
-  const stockTransmeta= await requestOsis({osis_code})
-  const stockYunta = await requestOsis({osis_code: yunta_code})
-
+  const stockTransmeta= await Osis.getStock({osis_code})
+  console.log("🚀 ~ showTransmetaYuntaCode ~ stockTransmeta:", stockTransmeta)
+  const stockYunta = await Osis.getStock({osis_code: yunta_code})
+  // const data = await Osis.getCustomer({document: "71918617"})
   const query = { osis_code: { $in: [osis_code, yunta_code] } };
 
   const codes = await Code.find(query);
