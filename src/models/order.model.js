@@ -4,7 +4,7 @@ const orderSchema = new mongoose.Schema({
     customer_id: { type: mongoose.Schema.Types.ObjectId, ref: "customers" },
     cart:[{ 
       quantity: Number,
-      osis_code: String,
+      code: String,
       price: Number
     }],
     total_amount: Number,

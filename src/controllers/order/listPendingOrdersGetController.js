@@ -1,3 +1,5 @@
+import { listPendingOrders } from "../../services/order/listPendingOrders.service.js";
+
 export default async function listPendingOrdersGetController(req, res) {
   try {
     const orders = await listPendingOrders();
