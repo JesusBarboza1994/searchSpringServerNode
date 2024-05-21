@@ -3,7 +3,7 @@ import config from "../config.js";
 export default function connectDB() {
   try {
     mongoose.connect(config.mongoURI, { });
-    console.log("Conexión establecida")
+    console.log("Conectado a MongoDB");
   } catch(err) {
     console.log("ERROR",err);
   }  

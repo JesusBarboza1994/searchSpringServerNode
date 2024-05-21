@@ -17,10 +17,10 @@ export default async function listCodesGetController(req, res) {
   
     const {brands, models} = await listBrandsAndModels({brand,model})
     const {paginatedItems,totalPages,totalItems} = pagination({itemsPerPage:items_per_page, page, items:codes})
-    res.status(200).send({ codes: paginatedItems,totalItems,totalPages, brands, models, positions, versions });
+    return res.status(200).send({ codes: paginatedItems,totalItems,totalPages, brands, models, positions, versions });
   } catch (error) {
     console.log("🚀 ~ listCodesGetController ~ error:", error)
-  
-    res.status(500).send({ message: error.message });
+    if(error.status == 400) return res.status(400).send({ success: false, errors: error.message, code: error.code })
+    return res.status(500).send({ success: false, errors: error.message })
   }
 }

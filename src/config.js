@@ -6,7 +6,10 @@ const config = {
   sqlServerUser: process.env.SQLSERVER_USER,
   sqlServer:process.env.SQLSERVER_SERVER,
   sqlServerPassword: process.env.SQLSERVER_PASSWORD,
-  sqlServerDatabase: process.env.SQLSERVER_DATABASE
+  sqlServerDatabase: process.env.SQLSERVER_DATABASE,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY_TOKEN,
+  secretAccesTime: process.env.APP_SECRET_ACCESS_TIME
+
 }
 console.log("CONFIG", config)
 export default config

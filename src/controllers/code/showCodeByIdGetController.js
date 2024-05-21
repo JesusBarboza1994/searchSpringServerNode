@@ -5,9 +5,10 @@ export default async function showCodeByIdGetController(req, res) {
     const { id } = req.params;
     console.log("🚀 ~ showCodeByIdGetController ~ id:", id)
     const code= await showCodeById({id});
-    res.status(200).send(code);
+    return res.status(200).send(code);
   } catch (error) {
     console.log("🚀 ~ showCodeByIdGetController ~ error:", error)
-    res.status(500).send({ message: error.message });
+    if(error.status == 400) return res.status(400).send({ success: false, errors: error.message, code: error.code })
+    return res.status(500).send({ success: false, errors: error.message })
   }
 }

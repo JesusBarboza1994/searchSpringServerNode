@@ -4,11 +4,11 @@ export default async function listModelCarsGetController(req, res) {
         const { brand_id } = req.params;
         const allModelCars = await listModelCars({ brand_id });
         
-        res.status(200).send(allModelCars);
+        return res.status(200).send(allModelCars);
      } catch (error) {
         console.log("🚀 ~ listModelCarsGetController ~ error:", error)
-        
-        res.status(500).send({ message: error.message });
+        if(error.status == 400) return res.status(400).send({ success: false, errors: error.message, code: error.code })
+        return res.status(500).send({ success: false, errors: error.message })
      }
  }
 

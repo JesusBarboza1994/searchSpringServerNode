@@ -16,7 +16,7 @@ export default async function createOrderPostController(req, res) {
     })
   } catch (error) {
     console.log("🚀 ~ createOrderPostController ~ error:", error)
-    if(error.status == 400) return { success: false, status: 400, errors: error.message }
-    return { success: false, status: 500, errors: error.message }
+    if(error.status == 400) return res.status(400).send({ success: false, errors: error.message, code: error.code })
+    return res.status(500).send({ success: false, errors: error.message })
   }
 }
