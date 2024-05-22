@@ -8,7 +8,7 @@ export async function listBrands({search}) {
     const brands = await Brands.find({});
     const brandsAdapter= brands.map(brand => {
         return {
-            _id: brand._id,
+            id: brand._id,
             name: brand.name,
             img_url: brand.image
         }
