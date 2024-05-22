@@ -10,7 +10,7 @@ const orderSchema = new mongoose.Schema({
     total_amount: Number,
     total_items: Number,
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-    status: { type: String, enum: ["PENDIENTE", "APROBADO", "RECHAZADO"], default: "PENDIENTE" },
+    status: { type: String, enum: ["PENDIENTE", "APROBADO", "ANULADO"], default: "PENDIENTE" },
     
 },
   {
