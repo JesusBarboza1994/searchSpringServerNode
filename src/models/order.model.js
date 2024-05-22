@@ -11,7 +11,13 @@ const orderSchema = new mongoose.Schema({
     total_items: Number,
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
     status: { type: String, enum: ["PENDIENTE", "APROBADO", "RECHAZADO"], default: "PENDIENTE" },
-});
+    
+},
+  {
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  }
+);
+
 
 const Order = mongoose.model('orders', orderSchema, 'orders');
 
