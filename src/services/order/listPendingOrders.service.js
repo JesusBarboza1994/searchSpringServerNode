@@ -17,8 +17,10 @@ export async function listPendingOrders(){
       customer: 1, 
       cart: 1, 
       total_amount: 1, 
-      total_items: 1 
+      total_items: 1, 
+      created_at: 1
     } },
+   
   ])
   return pendingOrders
 }

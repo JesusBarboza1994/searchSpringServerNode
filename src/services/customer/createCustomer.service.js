@@ -1,7 +1,5 @@
-import config from "../../config.js";
 import { ApiNet } from "../../lib/ApiNet.external.js";
 import Customer from "../../models/customer.model.js";
-import Osis from "../../utils/Osis.js";
 import { CustomError } from "../../utils/customError.js";
 
 export async function createCustomer({customerData}) {
@@ -27,18 +25,6 @@ export async function createCustomer({customerData}) {
       throw new CustomError("Invalid document type", 400)
     }
 
-    const existCustomerInOsis = await Osis.getCustomer({document: document_number})
-    if(!existCustomerInOsis){
-      await Osis.insertCustomer({
-        documentNumber:document_number,
-        documentType: document_type, 
-        name: newCustomer.name, 
-        maternalLastname: newCustomer.maternal_lastname,
-        paternalLastname:newCustomer.paternal_lastname,
-        address: newCustomer.address, 
-        phone: newCustomer.phone, 
-        email: newCustomer.email})
-    }
     return newCustomer
   }
   return customer

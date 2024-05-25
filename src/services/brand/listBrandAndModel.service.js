@@ -17,7 +17,7 @@ export default async function listBrandsAndModels({brand,model}) {
     }
     brands = brands.map(brand => brand.name)
   }else{
-    brands = (await listBrands()).map(brand => brand.name)
+    brands = (await listBrands({})).map(brand => brand.name)
   }
  
   return {brands,models}

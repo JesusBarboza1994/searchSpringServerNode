@@ -3,6 +3,7 @@ import { cancelOrder } from "../../services/order/cancelOrder.service.js";
 export default async function cancelOrderPatchController(req, res) {
   try {
     const { id } = req.params;
+    console.log(id)
     const order = await cancelOrder({id});
     return res.status(200).send(order);
   } catch (error) {
