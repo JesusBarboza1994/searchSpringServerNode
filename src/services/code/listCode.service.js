@@ -16,6 +16,7 @@ export default async function listCodes({brand, model, version, position, start_
     if(end_year) query.end_year = {$lte: end_year}
 
     const codes = await Code.aggregate([
+        { $match: {type:"transmeta-spring"}},
         { $unwind: "$cars_ids" },
         {
           $lookup: {
