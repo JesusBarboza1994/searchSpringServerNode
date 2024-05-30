@@ -20,9 +20,7 @@ export async function showTransmetaYuntaCode({osis_code}) {
       type: transmeta.type,
       osis_code: transmeta.osis_code,
       price: transmeta.price[0].list[0].price,
-      // stock: stockTransmeta.recordset.reduce((acc, curr) => acc + curr.spa_salfin, 0)
-      stock:10
-
+      stock: stockTransmeta.recordset.reduce((acc, curr) => acc + curr.spa_salfin, 0)
     }
   }
   if(yunta) response.yunta = {
@@ -31,8 +29,7 @@ export async function showTransmetaYuntaCode({osis_code}) {
       type: yunta.type,
       osis_code: yunta.osis_code,
       price: yunta.price[0]?.list[0].price,
-      // stock: stockYunta.recordset.reduce((acc, curr) => acc + curr.spa_salfin, 0)
-      stock:10
+      stock: stockYunta.recordset.reduce((acc, curr) => acc + curr.spa_salfin, 0)
     }
   return response
 }
