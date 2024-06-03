@@ -10,11 +10,17 @@ export async function updateCodesWithPricesService({type, data}) {
       };
 
       const response = Code.findOneAndUpdate({type, osis_code: value.osis_code},
-        { $push: { price: newPriceEntry } },
+        { $push: { 
+          price: {
+          $each: [newPriceEntry],
+          $position: 0
+          }
+          }
+        },
         { upsert: true },
         { new: true }
       )
-      promises.push(response)
+      promises.push(response) 
     }
 
     const response = await Promise.all(promises);
