@@ -8,7 +8,8 @@ const config = {
   sqlServerPassword: process.env.SQLSERVER_PASSWORD,
   sqlServerDatabase: process.env.SQLSERVER_DATABASE,
   secretAccessKey: process.env.SECRET_ACCESS_KEY_TOKEN,
-  secretAccesTime: process.env.APP_SECRET_ACCESS_TIME
+  secretAccesTime: process.env.APP_SECRET_ACCESS_TIME,
+  appScriptKey: process.env.APP_SCRIPT_KEY
 
 }
 console.log("CONFIG", config)

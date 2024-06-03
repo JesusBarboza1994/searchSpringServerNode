@@ -17,8 +17,10 @@ export async function updateCodesWithPricesService({type, data}) {
           }
           }
         },
-        { upsert: true },
-        { new: true }
+        { upsert: true,
+          new: true,
+        }
+        
       )
       promises.push(response) 
     }
