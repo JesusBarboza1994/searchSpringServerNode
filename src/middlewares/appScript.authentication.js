@@ -1,3 +1,5 @@
+import { CustomError } from "../utils/customError.js"
+
 export default function appScriptAuthentication(req, res, next) {
   try {
     const key =  req.headers['x-api-key']
