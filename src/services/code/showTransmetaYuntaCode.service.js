@@ -43,3 +43,14 @@ export async function showTransmetaYuntaCode({osis_code}) {
     }
   return response
 }
+
+
+
+
+
+
+export async function passProductLimit () {
+  const { data } = await getAddonBalance(PRODUCT_LIMIT)
+  const { count } = await checkProductQuantity();
+  return count >= data.limit
+}

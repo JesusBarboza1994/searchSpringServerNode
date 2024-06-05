@@ -21,6 +21,7 @@ export default class Osis {
                   AND ([alm_codalm] = '0055'
                   OR [alm_codalm] = '0010'
                   OR [alm_codalm] = '0025'
+                  OR [alm_codalm] = '0047'
                   OR [alm_codalm] = '0037')
                   AND [ano_codano] = @year
                   AND [mes_codmes] = @month`);
