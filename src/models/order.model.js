@@ -5,7 +5,15 @@ const orderSchema = new mongoose.Schema({
     cart:[{ 
       quantity: Number,
       code: String,
-      price: Number
+      price: Number,
+      stock: [{
+        warehouse:String,
+        quantity: Number,
+      }],
+      warehouse:{
+        name:String,
+        stock:Number
+      }
     }],
     total_amount: Number,
     total_items: Number,
