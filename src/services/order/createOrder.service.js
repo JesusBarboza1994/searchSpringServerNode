@@ -6,5 +6,7 @@ export async function createOrder({ customer_id, cart }) {
   const total_amount = cart.reduce((acc, item) => acc + item.price * item.quantity/2, 0)
   const total_items = cart.reduce((acc, item) => acc + item.quantity, 0)
   const order = await Order.create({ customer_id, cart, total_amount, total_items })
+  console.log("ORDER", order)
   return order
+  
 }
