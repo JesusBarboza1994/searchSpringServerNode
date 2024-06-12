@@ -15,7 +15,8 @@ export async function listPendingOrders(){
     { $unwind: "$customer" },
     { $project: { 
       customer: 1, 
-      cart: 1, 
+      cart: 1,
+      order_id: 1,
       total_amount: 1, 
       total_items: 1, 
       created_at: 1
