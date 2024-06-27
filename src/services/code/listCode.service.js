@@ -16,7 +16,7 @@ export default async function listCodes({brand, model, version, position, start_
     if(end_year) query.end_year = {$lte: end_year}
 
     const codes = await Code.aggregate([
-        { $match: {type:"transmeta-spring"}},
+        { $match: {type:"transmeta-spring"}}, 
         { $unwind: "$cars_ids" },
         {
           $lookup: {
@@ -61,7 +61,11 @@ export default async function listCodes({brand, model, version, position, start_
         	}
 				},
         {
-					$match: query
+          $match: { //filtra codigos que no tienen image y car_id
+            ...query,
+            "img_url": { $ne: null, $ne: "" },
+            "cars_ids.car_id": { $ne: null, $ne: "" }
+          }
 				}
       ]);
 
