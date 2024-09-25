@@ -1,8 +1,10 @@
-import { listPendingOrders } from "../../services/order/listPendingOrders.service.js";
+import { listOrders } from "../../services/order/listOrders.service.js";
 
-export default async function listPendingOrdersGetController(req, res) {
+export default async function listOrdersGetController(req, res) {
+
   try {
-    const orders = await listPendingOrders();
+    const { status = "PENDIENTE" } = req.query;
+    const orders = await listOrders(status);
     return res.status(200).send({ success: true, data: orders });
   } catch (error) {
     console.log("🚀 ~ listPendingOrdersGetController ~ error:", error)
