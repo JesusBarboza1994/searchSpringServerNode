@@ -1,9 +1,10 @@
 import Order from "../../models/order.model.js";
 
-export async function listPendingOrders(){
+export async function listOrders(status = "PENDIENTE"){
+  const filter = { status };
   // const pendingOrders = await Order.find({status: "PENDIENTE"})
   const pendingOrders = await Order.aggregate([
-    { $match: { status: "PENDIENTE" } },
+    { $match: filter },
     {
       $lookup: {
         from: "customers",
@@ -19,7 +20,9 @@ export async function listPendingOrders(){
       order_id: 1,
       total_amount: 1, 
       total_items: 1, 
-      created_at: 1
+      created_at: 1,
+      status: 1,
+      orders: 1
     } },
    
   ])

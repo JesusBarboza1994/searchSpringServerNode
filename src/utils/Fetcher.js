@@ -1,4 +1,4 @@
-import { URL } from 'url'
+import fetch from 'node-fetch';
 
 export default class Fetcher {
   static async run(url, config={
@@ -17,7 +17,7 @@ export default class Fetcher {
       try {
         data = await response.json()
       } catch (error) {
-        console.log("ERR ACA", error)
+        console.log("error", error)
         throw new Error(response.statusText);
       }
       throw new Error(data.errors);
