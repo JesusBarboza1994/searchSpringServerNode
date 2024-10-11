@@ -7,13 +7,11 @@ export default async function approveOrderPutController(req, res) {
     const { id } = req.params;
     const { customer, cart } = req.body;
 
-    console.log("🚀 ~ updateOrderPutController ~ id:", customer)
-    const customerId = await approveOrder({id,cart});
-    await updateCustomer({customer, customerId});
-
     const orderData = buildOrderData(cart, customer);
-    console.log("🚀 ~ updateOrderPutController ~ orderData:", orderData)
-    await generateOrderByOsis(orderData);
+    const orderIds = await generateOrderByOsis(orderData);
+
+    const customerId = await approveOrder({id,cart,orderIds});
+    await updateCustomer({customer, customerId});
     return res.status(200).send({
       success: true,
       code:'ORDER_APPROVED',

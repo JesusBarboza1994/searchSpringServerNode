@@ -161,7 +161,6 @@ export default class Osis {
           ? parseInt(result.recordset[0].PPC_NUMPPC, 10) + 1
           : 1;
         const newOrderNumber = lastOrderNumber.toString().padStart(10, "0");
-        console.log("orderNumber", newOrderNumber);
         // Insertar el nuevo pedido en la tabla PEDIDOS_VENTA_PPC
         const order = await pool
           .request()

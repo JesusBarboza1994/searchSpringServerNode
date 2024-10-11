@@ -1,6 +1,7 @@
 import Osis from "../../utils/Osis.js";
 
 export default async function generateOrderByOsis(orderData) {
+  const orderIds = [];
   let index = 0
   const ordersArray = Object.values(orderData);
   for (const order of ordersArray) {
@@ -36,7 +37,7 @@ export default async function generateOrderByOsis(orderData) {
       });
       correlative = String(Number(correlative) + 1).padStart(3, '0');
     }
-
+    orderIds.push(resultOrder);
   }
-
+  return orderIds;
 }
