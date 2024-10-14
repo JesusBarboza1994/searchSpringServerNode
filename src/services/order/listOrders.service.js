@@ -21,7 +21,8 @@ export async function listOrders(status = "PENDIENTE"){
       total_amount: 1, 
       total_items: 1, 
       created_at: 1,
-      status: 1
+      status: 1,
+      orders: 1
     } },
    
   ])

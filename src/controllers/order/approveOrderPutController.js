@@ -1,11 +1,16 @@
 import { updateCustomer } from "../../services/customer/updateCustomer.service.js";
 import { approveOrder } from "../../services/order/approveOrder.service.js";
-
+import buildOrderData from "../../services/order/buildCreateOrderOsis.service.js";
+import generateOrderByOsis from "../../services/order/generateOrderByOsis.service.js";
 export default async function approveOrderPutController(req, res) {
   try {
     const { id } = req.params;
     const { customer, cart } = req.body;
-    const customerId = await approveOrder({id,cart});
+
+    const orderData = buildOrderData(cart, customer);
+    const orderIds = await generateOrderByOsis(orderData);
+
+    const customerId = await approveOrder({id,cart,orderIds});
     await updateCustomer({customer, customerId});
     return res.status(200).send({
       success: true,
