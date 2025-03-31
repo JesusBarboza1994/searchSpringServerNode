@@ -20,7 +20,6 @@ export async function updateCustomer({customerId, customer}) {
     newCustomer.document_number = customer.document_number
   }
   await newCustomer.save()
-  console.log('🚀 ~ updateCustomer ~ newCustomer:', newCustomer)
   const existCustomerInOsis = await Osis.getCustomer({document: newCustomer.document_number})
     if(!existCustomerInOsis){
       await Osis.insertCustomer({
