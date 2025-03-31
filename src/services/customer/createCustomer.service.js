@@ -5,7 +5,6 @@ import { CustomError } from "../../utils/customError.js";
 export async function createCustomer({customerData}) {
   const { document_type, document_number, email, phone } = customerData
   let customer = await Customer.findOne({document_number});
-  console.log("🚀 ~ createCustomer ~ customer:", customer)
   if(!document_type || !document_number) throw new CustomError("documentType and documentNumber is required", 400)
   if (!customer) {
     const newCustomer = new Customer({ document_type, document_number, email, phone })
