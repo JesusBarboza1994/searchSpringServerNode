@@ -2,10 +2,20 @@ import { createCustomer } from "../../services/customer/createCustomer.service.j
 import { updateCustomer } from "../../services/customer/updateCustomer.service.js";
 import { CustomError } from "../../utils/customError.js";
 
-export async function createOrUpdateCustomerController(req, res) {
+export default async function createOrUpdateCustomerController(req, res) {
   try {
     const { customerId } = req.params;
-    const customerData = req.body;
+    const { document,email,phone,name,observations } = req.body;
+    const document_type = document.length == 11 ? "RUC" : "DNI";
+
+    const customerData = {
+      document_type,
+      document_number: document,
+      email,
+      phone,
+      name,
+      observations
+    }
 
     let result;
 
@@ -15,8 +25,15 @@ export async function createOrUpdateCustomerController(req, res) {
         customer: customerData
       });
     } else {
-      result = await createCustomer(customerData);
+      result = await createCustomer({customerData});
     }
+
+    return res.status(200).json({
+      success: true,
+      message: "Customer created successfully",
+      data: result
+    });
+
   } catch (error) {
     console.log("🚀 ~ createOrUpdateCustomerController ~ error:", error);
     
@@ -27,7 +44,6 @@ export async function createOrUpdateCustomerController(req, res) {
         code: error.code 
       });
     }
-
     return res.status(500).json({
       success: false,
       message: "Internal server error"

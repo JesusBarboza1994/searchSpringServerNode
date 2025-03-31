@@ -17,6 +17,7 @@ const Authentication = (req, res, next) => {
 
 function validateToken(req){
   const signature = req.get('Authorization');
+  console.log("🚀 ~ validateToken ~ signature:", signature)
   if(signature){
     const tokenAccess = signature.split(' ')[1];
     const payload = jwt.verify(tokenAccess, config.secretAccessKey)
