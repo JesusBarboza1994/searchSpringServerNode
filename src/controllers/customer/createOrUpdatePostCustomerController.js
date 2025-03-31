@@ -4,7 +4,7 @@ import { CustomError } from "../../utils/customError.js";
 
 export default async function createOrUpdateCustomerController(req, res) {
   try {
-    const { customerId } = req.params;
+    const { id } = req.query;
     const { document,email,phone,name,observations } = req.body;
     const document_type = document.length == 11 ? "RUC" : "DNI";
 
@@ -13,15 +13,14 @@ export default async function createOrUpdateCustomerController(req, res) {
       document_number: document,
       email,
       phone,
-      name,
       observations
     }
 
     let result;
 
-    if (customerId) {
+    if (id) {
       result = await updateCustomer({
-        customerId,
+        customerId: id,
         customer: customerData
       });
     } else {
