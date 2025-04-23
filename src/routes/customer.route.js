@@ -6,5 +6,5 @@ import getCustomerByIdController from "../controllers/customer/getCustomerById.c
 const router = express.Router();
 
 router.post("/", Authentication, createOrUpdatePostCustomerController);
-router.get("/:id",getCustomerByIdController);
+router.get("/:id", Authentication, getCustomerByIdController);
 export default router;
