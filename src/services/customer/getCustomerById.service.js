@@ -6,6 +6,7 @@ export async function getCustomerById({ customerId }) {
     throw new Error("Customer not found");
   }
   return {
+    id: customer._id,
     documentType: customer.document_type,
     document: customer.document_number,
     name: customer.name,
