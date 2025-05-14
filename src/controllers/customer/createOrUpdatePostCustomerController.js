@@ -7,7 +7,6 @@ export default async function createOrUpdateCustomerController(req, res) {
     const { id } = req.query;
     const { document,email,phone,name,observations } = req.body;
     const document_type = document.length == 11 ? "RUC" : "DNI";
-
     const customerData = {
       document_type,
       document_number: document,
@@ -17,7 +16,6 @@ export default async function createOrUpdateCustomerController(req, res) {
     }
 
     let result;
-
     if (id) {
       result = await updateCustomer({
         customerId: id,
