@@ -39,7 +39,6 @@ export default class Osis {
         .query(`SELECT * FROM [MRC].[dbo].[AUXILIARES_AUX]
         WHERE [AUX_CODAUX] = @document
       `);
-      console.log("🚀 ~ Osis ~ getCustomer ~ result:", result);
       return result.rowsAffected[0] === 0 ? false : true;
     } catch (error) {
       console.log("🚀 ~ Osis ~ getCustomer ~ error:", error);

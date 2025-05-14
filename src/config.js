@@ -1,5 +1,5 @@
 const config = {
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 3002,
   mongoURI: process.env.MONGODB_URI,
   tokenApisNet: process.env.TOKEN_APIS_NET,
   apisNetUrl: process.env.APIS_NET_URL,
